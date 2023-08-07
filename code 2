@@ -1,0 +1,23 @@
+Servo myservo;  
+int val;    
+void setup()
+
+{
+  Serial.begin(9200);
+  Serial.println("RESET");
+  myservo.attach(2);  // 544 - 2400 attaches the servo on pin 2 to the servo object
+  myservo.write(80);                  // sets the servo position according to the scaled value
+}
+void loop()
+{
+     for (val=0; val<180; val+= 5) {
+       Serial.println(val);
+       myservo.write(val);                  // sets the servo position according to the scaled value
+       delay(100);
+     }
+     for (val=180; val>0; val-= 5) {
+       Serial.println(val);
+       myservo.write(val);                  // sets the servo position according to the scaled value
+       delay(100);
+     }
+}
